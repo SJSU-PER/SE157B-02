@@ -9,11 +9,13 @@
 package jaxb.generated.author;
 
 import java.math.BigInteger;
+import javax.persistence.Column;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  * <p>Java class for author_type complex type.
@@ -54,6 +56,18 @@ public class AuthorType {
     @XmlElement(name = "last_name", required = true)
     protected String lastName;
 
+   public AuthorType()
+   {
+   }
+
+   public AuthorType(BigInteger authorId, String firstName, String lastName)
+   {
+      this.authorId = authorId;
+      this.firstName = firstName;
+      this.lastName = lastName;
+   }
+
+
     /**
      * Gets the value of the authorId property.
      *
@@ -62,6 +76,8 @@ public class AuthorType {
      *     {@link BigInteger }
      *
      */
+    @Id
+    @Column(name="author_id")
     public BigInteger getAuthorId() {
         return authorId;
     }
@@ -86,6 +102,7 @@ public class AuthorType {
      *     {@link String }
      *
      */
+    @Column(name="first_name")
     public String getFirstName() {
         return firstName;
     }
@@ -110,6 +127,7 @@ public class AuthorType {
      *     {@link String }
      *
      */
+    @Column(name="last_name")
     public String getLastName() {
         return lastName;
     }
