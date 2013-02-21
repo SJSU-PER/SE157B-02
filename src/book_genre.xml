@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+
+<resultset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="book_genre.xsd">
+   <row>
+      <field name="genre_id">1</field>
+      <field name="book_id">1</field>
+   </row>
+
+   <row>
+      <field name="genre_id">2</field>
+      <field name="book_id">1</field>
+   </row>
+
+   <row>
+      <field name="genre_id">6</field>
+      <field name="book_id">1</field>
+   </row>
+
+   <row>
+      <field name="genre_id">8</field>
+      <field name="book_id">2</field>
+   </row>
+
+   <row>
+      <field name="genre_id">7</field>
+      <field name="book_id">3</field>
+   </row>
+
+   <row>
+      <field name="genre_id">8</field>
+      <field name="book_id">3</field>
+   </row>
+
+   <row>
+      <field name="genre_id">5</field>
+      <field name="book_id">4</field>
+   </row>
+
+   <row>
+      <field name="genre_id">4</field>
+      <field name="book_id">5</field>
+   </row>
+
+   <row>
+      <field name="genre_id">3</field>
+      <field name="book_id">5</field>
+   </row>
+
+   <row>
+      <field name="genre_id">2</field>
+      <field name="book_id">6</field>
+   </row>
+
+   <row>
+      <field name="genre_id">6</field>
+      <field name="book_id">6</field>
+   </row>
+
+   <row>
+      <field name="genre_id">2</field>
+      <field name="book_id">7</field>
+   </row>
+
+   <row>
+      <field name="genre_id">1</field>
+      <field name="book_id">7</field>
+   </row>
+
+   <row>
+      <field name="genre_id">2</field>
+      <field name="book_id">8</field>
+   </row>
+
+   <row>
+      <field name="genre_id">6</field>
+      <field name="book_id">8</field>
+   </row>
+
+   <row>
+      <field name="genre_id">2</field>
+      <field name="book_id">9</field>
+   </row>
+</resultset>
