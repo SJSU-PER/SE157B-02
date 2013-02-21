@@ -91,12 +91,6 @@ public class AuthorJAXBUnMarshaller
                session.save(new AuthorJAXBUnMarshaller(auth.getAuthorId(), auth.getFirstName(), auth.getLastName()));
             }
          }
-//            System.out.printf("\nAUTHOR id = '%d'\n",
-//                    journal.getAuthorId());
-//            System.out.printf("        firstName = '%s'\n",
-//                    journal.getFirstName());
-//            System.out.printf("        lastName = '%s'\n",
-//                    journal.getLastName());
          tx.commit();
          session.close();
          System.out.println("Author table loaded.");
@@ -111,6 +105,12 @@ public class AuthorJAXBUnMarshaller
    public static void main(String[] argv)
    {
       File xmlDocument = new File("src/author.xml");
+      Class klasses[] =
+      {
+         AuthorJAXBUnMarshaller.class
+      };
+      HibernateContext.addClasses(klasses);
+      HibernateContext.createSchema();
       AuthorJAXBUnMarshaller jaxbUnmarshaller = new AuthorJAXBUnMarshaller();
       jaxbUnmarshaller.unMarshall(xmlDocument);
    }
