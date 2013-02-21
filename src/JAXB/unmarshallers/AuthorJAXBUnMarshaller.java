@@ -33,7 +33,7 @@ public class AuthorJAXBUnMarshaller
    }
 
    @Id
-   @Column(name = "id")
+   @Column(name = "author_id")
    public long getId()
    {
       return id;
@@ -75,9 +75,9 @@ public class AuthorJAXBUnMarshaller
                  JAXBContext.newInstance("jaxb.generated.author");
          Unmarshaller unMarshaller = jaxbContext.createUnmarshaller();
 
-         JAXBElement<AuthorRoot> catalogElement =
+         JAXBElement<AuthorRoot> authorElement =
                  (JAXBElement<AuthorRoot>) unMarshaller.unmarshal(xmlDocument);
-         AuthorRoot author = catalogElement.getValue();
+         AuthorRoot author = authorElement.getValue();
          List<AuthorType> authorList = author.getAuthorInfo();
 
 
@@ -100,18 +100,5 @@ public class AuthorJAXBUnMarshaller
       {
          ex.printStackTrace();
       }
-   }
-
-   public static void main(String[] argv)
-   {
-      File xmlDocument = new File("src/author.xml");
-      Class klasses[] =
-      {
-         AuthorJAXBUnMarshaller.class
-      };
-      HibernateContext.addClasses(klasses);
-      HibernateContext.createSchema();
-      AuthorJAXBUnMarshaller jaxbUnmarshaller = new AuthorJAXBUnMarshaller();
-      jaxbUnmarshaller.unMarshall(xmlDocument);
    }
 }
