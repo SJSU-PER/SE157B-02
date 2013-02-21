@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+
+<publisher xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="publisher.xsd">
+   <pub_info>
+      <pub_id>1</pub_id>
+      <pub_name>Pocket Books</pub_name>
+   </pub_info>
+
+   <pub_info>
+      <pub_id>2</pub_id>
+      <pub_name>Pearson</pub_name>
+   </pub_info>
+
+   <pub_info>
+      <pub_id>3</pub_id>
+      <pub_name>Prentice Hall</pub_name>
+   </pub_info>
+
+   <pub_info>
+      <pub_id>4</pub_id>
+      <pub_name>Gallery Books</pub_name>
+   </pub_info>
+
+   <pub_info>
+      <pub_id>5</pub_id>
+      <pub_name>Dales Large Print Books</pub_name>
+   </pub_info>
+
+   <pub_info>
+      <pub_id>6</pub_id>
+      <pub_name>Random House Digital, Inc</pub_name>
+   </pub_info>
+</publisher>

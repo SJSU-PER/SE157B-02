@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+
+<book xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="book.xsd">
+   <book_info>
+      <book_id>1</book_id>
+      <pub_date>2008</pub_date>
+      <title>Bag of Bones</title>
+      <isbn_id>1</isbn_id>
+      <pub_id>1</pub_id>
+   </book_info>
+
+   <book_info>
+      <book_id>2</book_id>
+      <pub_date>1933</pub_date>
+      <title>Lost Horizon</title>
+      <isbn_id>2</isbn_id>
+      <pub_id>1</pub_id>
+   </book_info>
+
+   <book_info>
+      <book_id>3</book_id>
+      <pub_date>1923</pub_date>
+      <title>Bambi: A Life in the Woods</title>
+      <isbn_id>3</isbn_id>
+      <pub_id>1</pub_id>
+   </book_info>
+
+   <book_info>
+      <book_id>4</book_id>
+      <pub_date>2008</pub_date>
+      <title>Database Systems, the Complete Book</title>
+      <isbn_id>4</isbn_id>
+      <pub_id>2</pub_id>
+   </book_info>
+
+   <book_info>
+      <book_id>5</book_id>
+      <pub_date>1998</pub_date>
+      <title>Algebra: Tools for a Changing World</title>
+      <isbn_id>5</isbn_id>
+      <pub_id>3</pub_id>
+   </book_info>
+
+   <book_info>
+      <book_id>6</book_id>
+      <pub_date>2009</pub_date>
+      <title>Under the Dome</title>
+      <isbn_id>6</isbn_id>
+      <pub_id>4</pub_id>
+   </book_info>
+
+   <book_info>
+      <book_id>7</book_id>
+      <pub_date>2002</pub_date>
+      <title>Murder at School</title>
+      <isbn_id>7</isbn_id>
+      <pub_id>5</pub_id>
+   </book_info>
+
+   <book_info>
+      <book_id>8</book_id>
+      <pub_date>1977</pub_date>
+      <title>The Shining</title>
+      <isbn_id>8</isbn_id>
+      <pub_id>4</pub_id>
+   </book_info>
+
+   <book_info>
+      <book_id>9</book_id>
+      <pub_date>1975</pub_date>
+      <title>Salem's Lot</title>
+      <isbn_id>9</isbn_id>
+      <pub_id>6</pub_id>
+   </book_info>
+</book>

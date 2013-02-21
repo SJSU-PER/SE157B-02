@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:complexType name="publisher_type">
+      <xs:sequence>
+         <xs:element name="pub_id" type="xs:string"/>
+         <xs:element name="pub_name" type="xs:string"/>
+      </xs:sequence>
+   </xs:complexType>
+
+   <xs:element name="pub_info" type="publisher_type"/>
+
+   <xs:complexType name="publisher_root">
+      <xs:sequence>
+         <xs:element ref="pub_info" minOccurs="0"
+                        maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+
+   <xs:element name="publisher" type="publisher_root"/>
+</xs:schema>

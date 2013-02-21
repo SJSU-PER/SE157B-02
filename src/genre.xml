@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+
+<genre xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="genre.xsd">
+   <genre_info>
+      <id>1</id>
+      <genre_name>Mystery</genre_name>
+   </genre_info>
+
+   <genre_info>
+      <id>2</id>
+      <genre_name>Horror</genre_name>
+   </genre_info>
+
+   <genre_info>
+      <id>3</id>
+      <genre_name>Education</genre_name>
+   </genre_info>
+
+   <genre_info>
+      <id>4</id>
+      <genre_name>Math</genre_name>
+   </genre_info>
+
+   <genre_info>
+      <id>5</id>
+      <genre_name>Database</genre_name>
+   </genre_info>
+
+   <genre_info>
+      <id>6</id>
+      <genre_name>Thriller</genre_name>
+   </genre_info>
+
+   <genre_info>
+      <id>7</id>
+      <genre_name>Child Book</genre_name>
+   </genre_info>
+
+   <genre_info>
+      <id>8</id>
+      <genre_name>Adventure</genre_name>
+   </genre_info>
+</genre>

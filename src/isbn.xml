@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+
+<isbn xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="isbn.xsd">
+   <isbn_info>
+      <id>1</id>
+      <isbn_number>9781451678628</isbn_number>
+   </isbn_info>
+
+   <isbn_info>
+      <id>2</id>
+      <isbn_number>9781453239766</isbn_number>
+   </isbn_info>
+
+   <isbn_info>
+      <id>3</id>
+      <isbn_number>9780671666071</isbn_number>
+   </isbn_info>
+
+   <isbn_info>
+      <id>4</id>
+      <isbn_number>9780131873254</isbn_number>
+   </isbn_info>
+
+   <isbn_info>
+      <id>5</id>
+      <isbn_number>9780134330693</isbn_number>
+   </isbn_info>
+
+   <isbn_info>
+      <id>6</id>
+      <isbn_number>9781476735474</isbn_number>
+   </isbn_info>
+
+   <isbn_info>
+      <id>7</id>
+      <isbn_number>9781842622001</isbn_number>
+   </isbn_info>
+
+   <isbn_info>
+      <id>8</id>
+      <isbn_number>9780307743657</isbn_number>
+   </isbn_info>
+
+   <isbn_info>
+      <id>9</id>
+      <isbn_number>9780307743671</isbn_number>
+   </isbn_info>
+</isbn>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:complexType name="author_type">
+      <xs:sequence>
+         <xs:element name="author_id" type="xs:string"/>
+         <xs:element name="first_name" type="xs:string"/>
+         <xs:element name="last_name" type="xs:string"/>
+      </xs:sequence>
+   </xs:complexType>
+
+   <xs:element name="author_info" type="author_type"/>
+
+   <xs:complexType name="author_root">
+      <xs:sequence>
+         <xs:element ref="author_info" minOccurs="0"
+                        maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+
+   <xs:element name="author" type="author_root"/>
+</xs:schema>
