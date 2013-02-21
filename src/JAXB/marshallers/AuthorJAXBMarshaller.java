@@ -25,43 +25,43 @@ public class AuthorJAXBMarshaller
          List<AuthorType> authorList = author.getAuthorInfo();
 
          AuthorType authorInfo = factory.createAuthorType();
-         authorInfo.setAuthorId(new BigInteger("1"));
+         authorInfo.setAuthorId(1);
          authorInfo.setFirstName("Stephen");
          authorInfo.setLastName("King");
          authorList.add(authorInfo);
 
          authorInfo = factory.createAuthorType();
-         authorInfo.setAuthorId(new BigInteger("2"));
+         authorInfo.setAuthorId(2);
          authorInfo.setFirstName("James");
          authorInfo.setLastName("Hilton");
          authorList.add(authorInfo);
 
          authorInfo = factory.createAuthorType();
-         authorInfo.setAuthorId(new BigInteger("3"));
+         authorInfo.setAuthorId(3);
          authorInfo.setFirstName("Felix");
          authorInfo.setLastName("Salten");
          authorList.add(authorInfo);
 
          authorInfo = factory.createAuthorType();
-         authorInfo.setAuthorId(new BigInteger("4"));
+         authorInfo.setAuthorId(4);
          authorInfo.setFirstName("Hector");
          authorInfo.setLastName("Garcia-Milina");
          authorList.add(authorInfo);
 
          authorInfo = factory.createAuthorType();
-         authorInfo.setAuthorId(new BigInteger("5"));
+         authorInfo.setAuthorId(5);
          authorInfo.setFirstName("Jeffry");
          authorInfo.setLastName("Ullman");
          authorList.add(authorInfo);
 
          authorInfo = factory.createAuthorType();
-         authorInfo.setAuthorId(new BigInteger("6"));
+         authorInfo.setAuthorId(6);
          authorInfo.setFirstName("Jennifer");
          authorInfo.setLastName("Widom");
          authorList.add(authorInfo);
 
          authorInfo = factory.createAuthorType();
-         authorInfo.setAuthorId(new BigInteger("7"));
+         authorInfo.setAuthorId(7);
          authorInfo.setFirstName("Prentice");
          authorInfo.setLastName("Hall");
          authorList.add(authorInfo);

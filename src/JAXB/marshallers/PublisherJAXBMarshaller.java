@@ -26,32 +26,32 @@ public class PublisherJAXBMarshaller
          List<PublisherType> publisherList = publisher.getPubInfo();
 
          PublisherType publisherInfo = factory.createPublisherType();
-         publisherInfo.setPubId(new BigInteger("1"));
+         publisherInfo.setPubId(1);
          publisherInfo.setPubName("Pocket Books");
          publisherList.add(publisherInfo);
 
          publisherInfo = factory.createPublisherType();
-         publisherInfo.setPubId(new BigInteger("2"));
+         publisherInfo.setPubId(2);
          publisherInfo.setPubName("Pearson");
          publisherList.add(publisherInfo);
 
          publisherInfo = factory.createPublisherType();
-         publisherInfo.setPubId(new BigInteger("3"));
+         publisherInfo.setPubId(3);
          publisherInfo.setPubName("Prentice Hall");
          publisherList.add(publisherInfo);
 
          publisherInfo = factory.createPublisherType();
-         publisherInfo.setPubId(new BigInteger("4"));
+         publisherInfo.setPubId(4);
          publisherInfo.setPubName("Gallery Books");
          publisherList.add(publisherInfo);
 
          publisherInfo = factory.createPublisherType();
-         publisherInfo.setPubId(new BigInteger("5"));
+         publisherInfo.setPubId(5);
          publisherInfo.setPubName("Dales Large Print Books");
          publisherList.add(publisherInfo);
 
          publisherInfo = factory.createPublisherType();
-         publisherInfo.setPubId(new BigInteger("6"));
+         publisherInfo.setPubId(6);
          publisherInfo.setPubName("Random House Digital, Inc");
          publisherList.add(publisherInfo);
 

@@ -1,6 +1,5 @@
 package JAXB.marshallers;
 
-import java.math.BigInteger;
 import java.util.List;
 import javax.xml.bind.*;
 import jaxb.generated.genre.GenreRoot;
@@ -26,42 +25,42 @@ public class GenreJAXBMarshaller
          List<GenreType> genreList = genre.getGenreInfo();
 
          GenreType genreInfo = factory.createGenreType();
-         genreInfo.setId(new BigInteger("1"));
+         genreInfo.setId(1);
          genreInfo.setGenreName("Mystery");
          genreList.add(genreInfo);
 
          genreInfo = factory.createGenreType();
-         genreInfo.setId(new BigInteger("2"));
+         genreInfo.setId(2);
          genreInfo.setGenreName("Horror");
          genreList.add(genreInfo);
 
          genreInfo = factory.createGenreType();
-         genreInfo.setId(new BigInteger("3"));
+         genreInfo.setId(3);
          genreInfo.setGenreName("Education");
          genreList.add(genreInfo);
 
          genreInfo = factory.createGenreType();
-         genreInfo.setId(new BigInteger("4"));
+         genreInfo.setId(4);
          genreInfo.setGenreName("Math");
          genreList.add(genreInfo);
 
          genreInfo = factory.createGenreType();
-         genreInfo.setId(new BigInteger("5"));
+         genreInfo.setId(5);
          genreInfo.setGenreName("Database");
          genreList.add(genreInfo);
 
          genreInfo = factory.createGenreType();
-         genreInfo.setId(new BigInteger("6"));
+         genreInfo.setId(6);
          genreInfo.setGenreName("Thriller");
          genreList.add(genreInfo);
 
          genreInfo = factory.createGenreType();
-         genreInfo.setId(new BigInteger("7"));
+         genreInfo.setId(7);
          genreInfo.setGenreName("Child Book");
          genreList.add(genreInfo);
 
          genreInfo = factory.createGenreType();
-         genreInfo.setId(new BigInteger("8"));
+         genreInfo.setId(8);
          genreInfo.setGenreName("Adventure");
          genreList.add(genreInfo);
 

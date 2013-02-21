@@ -24,47 +24,47 @@ public class ISBNJAXBMarshaller
          List<IsbnType> isbnList = isbn.getIsbnInfo();
 
          IsbnType isbnInfo = factory.createIsbnType();
-         isbnInfo.setId(new BigInteger("1"));
+         isbnInfo.setId(1);
          isbnInfo.setIsbnNumber("9781451678628");
          isbnList.add(isbnInfo);
 
          isbnInfo = factory.createIsbnType();
-         isbnInfo.setId(new BigInteger("2"));
+         isbnInfo.setId(2);
          isbnInfo.setIsbnNumber("9781453239766");
          isbnList.add(isbnInfo);
 
          isbnInfo = factory.createIsbnType();
-         isbnInfo.setId(new BigInteger("3"));
+         isbnInfo.setId(3);
          isbnInfo.setIsbnNumber("9780671666071");
          isbnList.add(isbnInfo);
 
          isbnInfo = factory.createIsbnType();
-         isbnInfo.setId(new BigInteger("4"));
+         isbnInfo.setId(4);
          isbnInfo.setIsbnNumber("9780131873254");
          isbnList.add(isbnInfo);
 
          isbnInfo = factory.createIsbnType();
-         isbnInfo.setId(new BigInteger("5"));
+         isbnInfo.setId(5);
          isbnInfo.setIsbnNumber("9780134330693");
          isbnList.add(isbnInfo);
 
          isbnInfo = factory.createIsbnType();
-         isbnInfo.setId(new BigInteger("6"));
+         isbnInfo.setId(6);
          isbnInfo.setIsbnNumber("9781476735474");
          isbnList.add(isbnInfo);
 
          isbnInfo = factory.createIsbnType();
-         isbnInfo.setId(new BigInteger("7"));
+         isbnInfo.setId(7);
          isbnInfo.setIsbnNumber("9781842622001");
          isbnList.add(isbnInfo);
 
          isbnInfo = factory.createIsbnType();
-         isbnInfo.setId(new BigInteger("8"));
+         isbnInfo.setId(8);
          isbnInfo.setIsbnNumber("9780307743657");
          isbnList.add(isbnInfo);
 
          isbnInfo = factory.createIsbnType();
-         isbnInfo.setId(new BigInteger("9"));
+         isbnInfo.setId(9);
          isbnInfo.setIsbnNumber("9780307743671");
          isbnList.add(isbnInfo);
 
