@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.List;
 import javax.xml.bind.*;
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import jaxb.generated.book_author.BookAuthorRoot;
@@ -14,7 +16,8 @@ import org.hibernate.Transaction;
 // Adapted from Pro XML Development with Java Technology
 // by Ajay Vohra and Deepak Vohra
 // Apress, 2006
-@Entity(name = "book_author")
+@Entity
+@Embeddable
 public class BookAuthorJAXBUnMarshaller
 {
    private long author_id;
@@ -30,7 +33,6 @@ public class BookAuthorJAXBUnMarshaller
       this.book_id = book_id;
    }
 
-   @Id
    @Column(name="author_id")
    public long getAuthor_id()
    {
@@ -42,7 +44,6 @@ public class BookAuthorJAXBUnMarshaller
       this.author_id = author_id;
    }
 
-   @Id
    @Column(name="book_id")
    public long getBook_id()
    {
