@@ -18,6 +18,7 @@ public class JAXBMarshaller
 			Marshaller marshaller = jaxbContext.createMarshaller();
 			ObjectFactory factory = new ObjectFactory();
 
+//         BookType catalog = factory.create();
 //			CatalogType catalog = factory.createCatalogType();
 //			List<JournalType> journalList = catalog.getJournal();
 //
