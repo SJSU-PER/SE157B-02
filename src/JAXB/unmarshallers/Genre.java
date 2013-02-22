@@ -13,8 +13,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import jaxb.generated.genre.GenreRoot;
 import jaxb.generated.genre.GenreType;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Example;
 
 // Adapted from Pro XML Development with Java Technology
 // by Ajay Vohra and Deepak Vohra
@@ -107,4 +109,28 @@ public class Genre
          ex.printStackTrace();
       }
    }
+
+    /**
+    Fetch the genre with a matching name.
+
+    @param genre the genre to match.
+    @return the genre or null.
+    */
+   public static Genre find(String genre)
+   {
+      // Query by example.
+      Genre prototype = new Genre();
+      prototype.setGenreName(genre);
+      Example example = Example.create(prototype);
+
+      Session session = HibernateContext.getSession();
+      Criteria criteria = session.createCriteria(Genre.class);
+      criteria.add(example);
+
+      Genre gen = (Genre) criteria.uniqueResult();
+
+      session.close();
+      return gen;
+   }
+
 }

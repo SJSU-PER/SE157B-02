@@ -18,7 +18,7 @@ public class XMLToMySQL
       {
          Genre.class, Author.class,
          Book.class, ISBN.class,
-         Publisher.class, BookAuthorJAXBUnMarshaller.class
+         Publisher.class
       };
       HibernateContext.addClasses(klasses);
       HibernateContext.createSchema();
@@ -31,16 +31,16 @@ public class XMLToMySQL
       Author jaxbAuthorUnmarshaller = new Author();
       jaxbAuthorUnmarshaller.unMarshall(xmlDocument);
 
+      xmlDocument = new File("src/publisher.xml");
+      Publisher jaxbPubUnmarshaller = new Publisher();
+      jaxbPubUnmarshaller.unMarshall(xmlDocument);
+
       xmlDocument = new File("src/book.xml");
       File isbnXML = new File("src/isbn.xml");
       Book jaxbBookUnmarshaller = new Book();
       jaxbBookUnmarshaller.unMarshall(xmlDocument, isbnXML);
 
-    
 
-      xmlDocument = new File("src/publisher.xml");
-      Publisher jaxbPubUnmarshaller = new Publisher();
-      jaxbPubUnmarshaller.unMarshall(xmlDocument);
 
 //      xmlDocument = new File("src/book_author.xml");
 //      BookAuthorJAXBUnMarshaller jaxbBookAuthUnmarshaller = new BookAuthorJAXBUnMarshaller();

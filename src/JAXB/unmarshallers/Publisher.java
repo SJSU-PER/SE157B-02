@@ -13,8 +13,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import jaxb.generated.publisher.PublisherRoot;
 import jaxb.generated.publisher.PublisherType;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Example;
 
 // Adapted from Pro XML Development with Java Technology
 // by Ajay Vohra and Deepak Vohra
@@ -100,5 +102,28 @@ public class Publisher
       {
          ex.printStackTrace();
       }
+   }
+
+   /**
+    Fetch the publisher with a matching name.
+
+    @param pub the publisher to match.
+    @return the publisher or null.
+    */
+   public static Publisher find(String pub)
+   {
+      // Query by example.
+      Publisher prototype = new Publisher();
+      prototype.setName(pub);
+      Example example = Example.create(prototype);
+
+      Session session = HibernateContext.getSession();
+      Criteria criteria = session.createCriteria(Publisher.class);
+      criteria.add(example);
+
+      Publisher publisher = (Publisher) criteria.uniqueResult();
+
+      session.close();
+      return publisher;
    }
 }

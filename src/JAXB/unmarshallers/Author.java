@@ -13,8 +13,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Example;
 
 // Adapted from Pro XML Development with Java Technology
 // by Ajay Vohra and Deepak Vohra
@@ -121,5 +123,30 @@ public class Author
       {
          ex.printStackTrace();
       }
+   }
+
+   /**
+    Fetch the author with a matching name.
+
+    @param firstname the first name of author to match.
+    @param lastname the last name of author to match.
+    @return the author or null.
+    */
+   public static Author find(String firstname, String lastname)
+   {
+      // Query by example.
+      Author prototype = new Author();
+      prototype.setFirstname(firstname);
+      prototype.setLastname(lastname);
+      Example example = Example.create(prototype);
+
+      Session session = HibernateContext.getSession();
+      Criteria criteria = session.createCriteria(Author.class);
+      criteria.add(example);
+
+      Author author = (Author) criteria.uniqueResult();
+
+      session.close();
+      return author;
    }
 }
