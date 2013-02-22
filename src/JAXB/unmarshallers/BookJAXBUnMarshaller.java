@@ -2,10 +2,13 @@ package JAXB.unmarshallers;
 
 import java.io.File;
 import java.util.List;
+import javax.persistence.AssociationOverride;
+import javax.persistence.AssociationOverrides;
 import javax.xml.bind.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import jaxb.generated.book.BookRoot;
 import jaxb.generated.book.BookType;
 import org.hibernate.Session;
@@ -15,6 +18,10 @@ import org.hibernate.Transaction;
 // by Ajay Vohra and Deepak Vohra
 // Apress, 2006
 @Entity(name = "book")
+@AssociationOverrides({
+        @AssociationOverride(name = "BookAuthor.book_id",
+            joinColumns = @JoinColumn(name = "id")),
+})
 public class BookJAXBUnMarshaller
 {
    private long id;

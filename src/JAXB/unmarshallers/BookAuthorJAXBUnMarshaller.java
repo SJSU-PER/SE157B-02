@@ -2,6 +2,7 @@ package JAXB.unmarshallers;
 
 import java.io.File;
 import java.util.List;
+import javax.persistence.Basic;
 import javax.xml.bind.*;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -16,11 +17,15 @@ import org.hibernate.Transaction;
 // Adapted from Pro XML Development with Java Technology
 // by Ajay Vohra and Deepak Vohra
 // Apress, 2006
-@Entity
+
 @Embeddable
 public class BookAuthorJAXBUnMarshaller
 {
+   @Column(name="author_id")
+   @Basic
    private long author_id;
+   @Column(name="book_id")
+   @Basic
    private long book_id;
 
    public BookAuthorJAXBUnMarshaller()
@@ -33,7 +38,6 @@ public class BookAuthorJAXBUnMarshaller
       this.book_id = book_id;
    }
 
-   @Column(name="author_id")
    public long getAuthor_id()
    {
       return author_id;
@@ -44,7 +48,6 @@ public class BookAuthorJAXBUnMarshaller
       this.author_id = author_id;
    }
 
-   @Column(name="book_id")
    public long getBook_id()
    {
       return book_id;

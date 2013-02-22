@@ -27,6 +27,10 @@ public class XMLToMySQL
       GenreJAXBUnMarshaller jaxbGenreUnmarshaller = new GenreJAXBUnMarshaller();
       jaxbGenreUnmarshaller.unMarshall(xmlDocument);
 
+//      xmlDocument = new File("src/book_author.xml");
+//      BookAuthorJAXBUnMarshaller jaxbBookAuthUnmarshaller = new BookAuthorJAXBUnMarshaller();
+//      jaxbBookAuthUnmarshaller.unMarshall(xmlDocument);
+
       xmlDocument = new File("src/author.xml");
       AuthorJAXBUnMarshaller jaxbAuthorUnmarshaller = new AuthorJAXBUnMarshaller();
       jaxbAuthorUnmarshaller.unMarshall(xmlDocument);
@@ -42,10 +46,5 @@ public class XMLToMySQL
       xmlDocument = new File("src/publisher.xml");
       PublisherJAXBUnMarshaller jaxbPubUnmarshaller = new PublisherJAXBUnMarshaller();
       jaxbPubUnmarshaller.unMarshall(xmlDocument);
-
-      xmlDocument = new File("src/book_author.xml");
-      BookAuthorJAXBUnMarshaller jaxbBookAuthUnmarshaller = new BookAuthorJAXBUnMarshaller();
-      jaxbBookAuthUnmarshaller.unMarshall(xmlDocument);
    }
-
 }
