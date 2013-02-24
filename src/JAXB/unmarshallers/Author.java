@@ -8,6 +8,7 @@ import jaxb.generated.author.AuthorRoot;
 import jaxb.generated.author.AuthorType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -39,7 +40,7 @@ public class Author
       this.lastname = lastname;
    }
 
-   @ManyToMany
+   @ManyToMany(fetch = FetchType.EAGER)
    @JoinTable(name="Book_Author",
                joinColumns={@JoinColumn(name="author_id")},
                inverseJoinColumns={@JoinColumn(name="book_id")})

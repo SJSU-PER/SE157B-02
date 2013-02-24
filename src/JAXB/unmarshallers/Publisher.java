@@ -62,7 +62,7 @@ public class Publisher
    }
 
    @OneToMany(mappedBy = "publisher", targetEntity = Book.class,
-   cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+   cascade = CascadeType.ALL, fetch = FetchType.LAZY)
    public List<Book> getBooks()
    {
       return books;
@@ -125,5 +125,10 @@ public class Publisher
 
       session.close();
       return publisher;
+   }
+
+   public String toString()
+   {
+      return name;
    }
 }

@@ -175,9 +175,10 @@ public class Book
             }
          }
          tx.commit();
-//         session.close();
+         session.close();
 
-         session.update(this);
+         Session session2 = HibernateContext.getSession();
+
          //Initiate all the new books
         Book bagOfBones = find("Bag of Bones");
         Book lostHorizon = find("Lost Horizon");
@@ -207,28 +208,71 @@ public class Book
         murder.setPublisher(dales);
         shining.setPublisher(gb);
         salem.setPublisher(randomHouse);
+        System.out.println(salem.getPublisher());
 
-        //Find the authors.
-        Author king = Author.find("Stephen", "King");
-        Author james = Author.find("James", "Hilton");
-        Author felix = Author.find("Felix", "Salten");
-        Author hector = Author.find("Hector", "Garcia-Milina");
-        Author jeff = Author.find("Jeffry", "Ullman");
-        Author prent = Author.find("Prentice", "Hall");
-        Author jenn = Author.find("Jennifer", "Widom");
+        Transaction tx2 = session2.beginTransaction();
+        {
+            session2.update(bagOfBones);
+            session2.update(lostHorizon);
+            session2.update(bambi);
+            session2.update(databaseSystems);
+            session2.update(mathBook);
+            session2.update(under);
+            session2.update(murder);
+            session2.update(shining);
+            session2.update(salem);
+        }
+        tx2.commit();
+        session2.close();
+        System.out.println("Book table loaded.");
+      }
+      catch (JAXBException ex)
+      {
+         ex.printStackTrace();
+      }
+   }
 
-        //add authors to book.
-        bagOfBones.getAuthors().add(king);
-        lostHorizon.getAuthors().add(james);
-        bambi.getAuthors().add(felix);
-        databaseSystems.getAuthors().add(jenn);
-        databaseSystems.getAuthors().add(hector);
-        databaseSystems.getAuthors().add(jeff);
-        mathBook.getAuthors().add(prent);
-        under.getAuthors().add(king);
-        murder.getAuthors().add(james);
-        shining.getAuthors().add(king);
-        salem.getAuthors().add(king);
+
+   public void loadAss()
+   {
+        Session session2 = HibernateContext.getSession();
+        session2.update(this);
+         //Initiate all the new books
+        Book bagOfBones = find("Bag of Bones");
+        Book lostHorizon = find("Lost Horizon");
+        Book bambi = find("Bambi: A Life in the Woods");
+        Book databaseSystems = find("Database Systems, the Complete Book");
+        Book mathBook = find("Algebra: Tools for a Changing World");
+        Book under = find("Under the Dome");
+        Book murder = find("Murder at School");
+        Book shining = find("The Shining");
+        Book salem = find("Salem's Lot");
+
+
+//        //Find the authors.
+//        Author king = Author.find("Stephen", "King");
+//        Author james = Author.find("James", "Hilton");
+//        Author felix = Author.find("Felix", "Salten");
+//        Author hector = Author.find("Hector", "Garcia-Milina");
+//        Author jeff = Author.find("Jeffry", "Ullman");
+//        Author prent = Author.find("Prentice", "Hall");
+//        Author jenn = Author.find("Jennifer", "Widom");
+//
+////        session.update(this);
+////        session.flush();
+//        //add authors to book.
+//        System.out.println("kahsdlkas");
+//        bagOfBones.getAuthors().add(king);
+//        lostHorizon.getAuthors().add(james);
+//        bambi.getAuthors().add(felix);
+//        databaseSystems.getAuthors().add(jenn);
+//        databaseSystems.getAuthors().add(hector);
+//        databaseSystems.getAuthors().add(jeff);
+//        mathBook.getAuthors().add(prent);
+//        under.getAuthors().add(king);
+//        murder.getAuthors().add(james);
+//        shining.getAuthors().add(king);
+//        salem.getAuthors().add(king);
 
         //Find the genres
         Genre mystery = Genre.find("Mystery");
@@ -239,6 +283,16 @@ public class Book
         Genre thriller = Genre.find("Thriller");
         Genre childBook = Genre.find("Child Book");
         Genre adventure = Genre.find("Adventure");
+
+        session2.update(bagOfBones);
+            session2.update(lostHorizon);
+            session2.update(bambi);
+            session2.update(databaseSystems);
+            session2.update(mathBook);
+            session2.update(under);
+            session2.update(murder);
+            session2.update(shining);
+            session2.update(salem);
 
         //add genres to books.
         bagOfBones.getGenres().add(mystery);
@@ -258,29 +312,22 @@ public class Book
         shining.getGenres().add(thriller);
         salem.getGenres().add(horror);
 
-//        Session session2 = HibernateContext.getSession();
+
         // Load the Student table in a transaction.
-        Transaction tx2 = session.beginTransaction();
+        Transaction tx2 = session2.beginTransaction();
         {
-            session.save(bagOfBones);
-            session.save(lostHorizon);
-            session.save(bambi);
-            session.save(databaseSystems);
-            session.save(mathBook);
-            session.save(under);
-            session.save(murder);
-            session.save(shining);
-            session.save(salem);
+            session2.update(bagOfBones);
+            session2.update(lostHorizon);
+            session2.update(bambi);
+            session2.update(databaseSystems);
+            session2.update(mathBook);
+            session2.update(under);
+            session2.update(murder);
+            session2.update(shining);
+            session2.update(salem);
         }
         tx2.commit();
-        session.close();
-
-         System.out.println("Book table loaded.");
-      }
-      catch (JAXBException ex)
-      {
-         ex.printStackTrace();
-      }
+        session2.close();
    }
 
    /**
