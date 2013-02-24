@@ -177,6 +177,7 @@ public class Book
          tx.commit();
 //         session.close();
 
+         session.update(this);
          //Initiate all the new books
         Book bagOfBones = find("Bag of Bones");
         Book lostHorizon = find("Lost Horizon");

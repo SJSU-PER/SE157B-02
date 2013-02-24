@@ -24,7 +24,7 @@ import org.hibernate.criterion.Example;
 @Entity(name = "Author")
 public class Author
 {
-      private String firstname;
+   private String firstname;
    private String lastname;
    private long id;
    private List<Book> books = new ArrayList<>();
