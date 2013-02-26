@@ -39,12 +39,6 @@ public class XMLToMySQL
       File isbnXML = new File("src/isbn.xml");
       Book jaxbBookUnmarshaller = new Book();
       jaxbBookUnmarshaller.unMarshall(xmlDocument, isbnXML);
-      jaxbBookUnmarshaller.loadAss();
-
-
-//      xmlDocument = new File("src/book_author.xml");
-//      BookAuthorJAXBUnMarshaller jaxbBookAuthUnmarshaller = new BookAuthorJAXBUnMarshaller();
-//      jaxbBookAuthUnmarshaller.unMarshall(xmlDocument);
    }
 
 }

@@ -136,7 +136,6 @@ public class Book
 
    public void unMarshall(File bookXML, File isbnXML)
    {
-
       try
       {
          JAXBContext jaxbContext =
@@ -148,7 +147,6 @@ public class Book
          BookRoot book = bookElement.getValue();
          List<BookType> bookList = book.getBookInfo();
 
-         //for ISBN
          JAXBContext jaxbContext2 =
                  JAXBContext.newInstance("jaxb.generated.isbn");
          Unmarshaller unMarshaller2 = jaxbContext2.createUnmarshaller();
@@ -180,38 +178,97 @@ public class Book
          Session session2 = HibernateContext.getSession();
 
          //Initiate all the new books
-        Book bagOfBones = find("Bag of Bones");
-        Book lostHorizon = find("Lost Horizon");
-        Book bambi = find("Bambi: A Life in the Woods");
-        Book databaseSystems = find("Database Systems, the Complete Book");
-        Book mathBook = find("Algebra: Tools for a Changing World");
-        Book under = find("Under the Dome");
-        Book murder = find("Murder at School");
-        Book shining = find("The Shining");
-        Book salem = find("Salem's Lot");
+         Book bagOfBones = find("Bag of Bones");
+         Book lostHorizon = find("Lost Horizon");
+         Book bambi = find("Bambi: A Life in the Woods");
+         Book databaseSystems = find("Database Systems, the Complete Book");
+         Book mathBook = find("Algebra: Tools for a Changing World");
+         Book under = find("Under the Dome");
+         Book murder = find("Murder at School");
+         Book shining = find("The Shining");
+         Book salem = find("Salem's Lot");
 
-        //Find publishers
-        Publisher pb = Publisher.find("Pocket Books");
-        Publisher pearson = Publisher.find("Pearson");
-        Publisher prentice = Publisher.find("Prentice Hall");
-        Publisher gb = Publisher.find("Gallery Books");
-        Publisher dales = Publisher.find("Dales Large Print Books");
-        Publisher randomHouse = Publisher.find("Random House Digital, Inc");
+         session2.update(bagOfBones);
+         session2.update(lostHorizon);
+         session2.update(bambi);
+         session2.update(databaseSystems);
+         session2.update(mathBook);
+         session2.update(under);
+         session2.update(murder);
+         session2.update(shining);
+         session2.update(salem);
 
-        //set the publishers of a book.
-        bagOfBones.setPublisher(pb);
-        lostHorizon.setPublisher(pb);
-        bambi.setPublisher(pb);
-        databaseSystems.setPublisher(pearson);
-        mathBook.setPublisher(prentice);
-        under.setPublisher(gb);
-        murder.setPublisher(dales);
-        shining.setPublisher(gb);
-        salem.setPublisher(randomHouse);
-        System.out.println(salem.getPublisher());
+         //Find publishers
+         Publisher pb = Publisher.find("Pocket Books");
+         Publisher pearson = Publisher.find("Pearson");
+         Publisher prentice = Publisher.find("Prentice Hall");
+         Publisher gb = Publisher.find("Gallery Books");
+         Publisher dales = Publisher.find("Dales Large Print Books");
+         Publisher randomHouse = Publisher.find("Random House Digital, Inc");
 
-        Transaction tx2 = session2.beginTransaction();
-        {
+         //set the publishers of a book.
+         bagOfBones.setPublisher(pb);
+         lostHorizon.setPublisher(pb);
+         bambi.setPublisher(pb);
+         databaseSystems.setPublisher(pearson);
+         mathBook.setPublisher(prentice);
+         under.setPublisher(gb);
+         murder.setPublisher(dales);
+         shining.setPublisher(gb);
+         salem.setPublisher(randomHouse);
+
+         //Find the authors.
+         Author king = Author.find("Stephen", "King");
+         Author james = Author.find("James", "Hilton");
+         Author felix = Author.find("Felix", "Salten");
+         Author hector = Author.find("Hector", "Garcia-Milina");
+         Author jeff = Author.find("Jeffry", "Ullman");
+         Author prent = Author.find("Prentice", "Hall");
+         Author jenn = Author.find("Jennifer", "Widom");
+
+         //add authors to book.
+         bagOfBones.getAuthors().add(king);
+         lostHorizon.getAuthors().add(james);
+         bambi.getAuthors().add(felix);
+         databaseSystems.getAuthors().add(jenn);
+         databaseSystems.getAuthors().add(hector);
+         databaseSystems.getAuthors().add(jeff);
+         mathBook.getAuthors().add(prent);
+         under.getAuthors().add(king);
+         murder.getAuthors().add(james);
+         shining.getAuthors().add(king);
+         salem.getAuthors().add(king);
+
+         //Find the genres
+         Genre mystery = Genre.find("Mystery");
+         Genre horror = Genre.find("Horror");
+         Genre education = Genre.find("Education");
+         Genre math = Genre.find("Math");
+         Genre database = Genre.find("Database");
+         Genre thriller = Genre.find("Thriller");
+         Genre childBook = Genre.find("Child Book");
+         Genre adventure = Genre.find("Adventure");
+
+         //add genres to books.
+         bagOfBones.getGenres().add(mystery);
+         bagOfBones.getGenres().add(horror);
+         bagOfBones.getGenres().add(thriller);
+         lostHorizon.getGenres().add(adventure);
+         bambi.getGenres().add(childBook);
+         bambi.getGenres().add(adventure);
+         databaseSystems.getGenres().add(database);
+         mathBook.getGenres().add(math);
+         mathBook.getGenres().add(education);
+         under.getGenres().add(horror);
+         under.getGenres().add(thriller);
+         murder.getGenres().add(horror);
+         murder.getGenres().add(mystery);
+         shining.getGenres().add(horror);
+         shining.getGenres().add(thriller);
+         salem.getGenres().add(horror);
+
+         Transaction tx2 = session2.beginTransaction();
+         {
             session2.update(bagOfBones);
             session2.update(lostHorizon);
             session2.update(bambi);
@@ -221,113 +278,15 @@ public class Book
             session2.update(murder);
             session2.update(shining);
             session2.update(salem);
-        }
-        tx2.commit();
-        session2.close();
-        System.out.println("Book table loaded.");
+         }
+         tx2.commit();
+         session2.close();
+         System.out.println("Book table loaded.");
       }
       catch (JAXBException ex)
       {
          ex.printStackTrace();
       }
-   }
-
-
-   public void loadAss()
-   {
-        Session session2 = HibernateContext.getSession();
-        session2.update(this);
-         //Initiate all the new books
-        Book bagOfBones = find("Bag of Bones");
-        Book lostHorizon = find("Lost Horizon");
-        Book bambi = find("Bambi: A Life in the Woods");
-        Book databaseSystems = find("Database Systems, the Complete Book");
-        Book mathBook = find("Algebra: Tools for a Changing World");
-        Book under = find("Under the Dome");
-        Book murder = find("Murder at School");
-        Book shining = find("The Shining");
-        Book salem = find("Salem's Lot");
-
-
-//        //Find the authors.
-//        Author king = Author.find("Stephen", "King");
-//        Author james = Author.find("James", "Hilton");
-//        Author felix = Author.find("Felix", "Salten");
-//        Author hector = Author.find("Hector", "Garcia-Milina");
-//        Author jeff = Author.find("Jeffry", "Ullman");
-//        Author prent = Author.find("Prentice", "Hall");
-//        Author jenn = Author.find("Jennifer", "Widom");
-//
-////        session.update(this);
-////        session.flush();
-//        //add authors to book.
-//        System.out.println("kahsdlkas");
-//        bagOfBones.getAuthors().add(king);
-//        lostHorizon.getAuthors().add(james);
-//        bambi.getAuthors().add(felix);
-//        databaseSystems.getAuthors().add(jenn);
-//        databaseSystems.getAuthors().add(hector);
-//        databaseSystems.getAuthors().add(jeff);
-//        mathBook.getAuthors().add(prent);
-//        under.getAuthors().add(king);
-//        murder.getAuthors().add(james);
-//        shining.getAuthors().add(king);
-//        salem.getAuthors().add(king);
-
-        //Find the genres
-        Genre mystery = Genre.find("Mystery");
-        Genre horror = Genre.find("Horror");
-        Genre education = Genre.find("Education");
-        Genre math = Genre.find("Math");
-        Genre database = Genre.find("Database");
-        Genre thriller = Genre.find("Thriller");
-        Genre childBook = Genre.find("Child Book");
-        Genre adventure = Genre.find("Adventure");
-
-        session2.update(bagOfBones);
-            session2.update(lostHorizon);
-            session2.update(bambi);
-            session2.update(databaseSystems);
-            session2.update(mathBook);
-            session2.update(under);
-            session2.update(murder);
-            session2.update(shining);
-            session2.update(salem);
-
-        //add genres to books.
-        bagOfBones.getGenres().add(mystery);
-        bagOfBones.getGenres().add(horror);
-        bagOfBones.getGenres().add(thriller);
-        lostHorizon.getGenres().add(adventure);
-        bambi.getGenres().add(childBook);
-        bambi.getGenres().add(adventure);
-        databaseSystems.getGenres().add(database);
-        mathBook.getGenres().add(math);
-        mathBook.getGenres().add(education);
-        under.getGenres().add(horror);
-        under.getGenres().add(thriller);
-        murder.getGenres().add(horror);
-        murder.getGenres().add(mystery);
-        shining.getGenres().add(horror);
-        shining.getGenres().add(thriller);
-        salem.getGenres().add(horror);
-
-
-        // Load the Student table in a transaction.
-        Transaction tx2 = session2.beginTransaction();
-        {
-            session2.update(bagOfBones);
-            session2.update(lostHorizon);
-            session2.update(bambi);
-            session2.update(databaseSystems);
-            session2.update(mathBook);
-            session2.update(under);
-            session2.update(murder);
-            session2.update(shining);
-            session2.update(salem);
-        }
-        tx2.commit();
-        session2.close();
    }
 
    /**
