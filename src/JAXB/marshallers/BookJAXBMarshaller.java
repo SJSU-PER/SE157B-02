@@ -7,9 +7,14 @@ import jaxb.generated.book.BookRoot;
 import jaxb.generated.book.BookType;
 import jaxb.generated.book.ObjectFactory;
 
-// Adapted from Pro XML Development with Java Technology
-// by Ajay Vohra and Deepak Vohra
-// Apress, 2006
+/**
+
+ @author Team Cosmos Erni Ali, Randy Zaatri, Philip Vaca
+
+ This class is responsible for taking the Book object representation and calling
+ the generateXMLDocument() method to create an XML representation of these book
+ objects.
+ */
 public class BookJAXBMarshaller
 {
    public void generateXMLDocument()
@@ -107,6 +112,13 @@ public class BookJAXBMarshaller
       }
    }
 
+   /**
+    Main method for the BookJAXBMarshaller class. Creates a BookJAXBMarshaller
+    object and calls the generateXMLDocument method on this newly created
+    object.
+
+    @param argv list of string arguments for this class.
+    */
    public static void main(String[] argv)
    {
       BookJAXBMarshaller jaxbMarshaller = new BookJAXBMarshaller();

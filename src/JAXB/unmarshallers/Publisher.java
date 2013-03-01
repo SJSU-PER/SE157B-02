@@ -18,9 +18,13 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Example;
 
-// Adapted from Pro XML Development with Java Technology
-// by Ajay Vohra and Deepak Vohra
-// Apress, 2006
+/**
+ @author Team Cosmos Erni Ali, Randy Zaatri, Philip Vaca
+
+ This class is responsible for taking the XML document that represents the
+ publisher data and deserializing it into java content trees to represent the
+ publisher data.
+ */
 @Entity(name = "Publisher")
 public class Publisher
 {
@@ -28,11 +32,20 @@ public class Publisher
    private long id;
    private List<Book> books = new ArrayList<>();
 
+   /**
+    Constructs a new publisher object, setting the publisher name to this
+    objects publisher name.
+
+    @param name the name of the publisher.
+    */
    public Publisher(String name)
    {
       this.name = name;
    }
 
+   /**
+    Creates a new publisher object.
+    */
    public Publisher()
    {
    }
@@ -72,7 +85,13 @@ public class Publisher
    {
       this.books = books;
    }
+   
+   /**
+    Takes an XML document and unmarshalls the data into the java content trees
+    to represent the publishers.
 
+    @param xmlDocument the XML document that stores the publisher data.
+    */
    public void unMarshall(File xmlDocument)
    {
       try

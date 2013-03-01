@@ -18,28 +18,41 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Example;
 
-// Adapted from Pro XML Development with Java Technology
-// by Ajay Vohra and Deepak Vohra
-// Apress, 2006
+/**
+
+ @author Team Cosmos Erni Ali, Randy Zaatri, Philip Vaca
+
+ The genre class is an object representation of the genre for each book. This
+ class stores the name of th ebook, the id of the book and the list of books
+ that fall under each genre.
+ */
 @Entity(name = "genre")
 public class Genre
 {
-      private String name;
+   private String name;
    private long id;
    private List<Book> books = new ArrayList<>();
 
+   /**
+    Constructor for creating a new Genre with a genre name.
+
+    @param genreName the name of the genre
+    */
    public Genre(String genreName)
    {
       this.name = genreName;
    }
 
+   /**
+    Constructor for creating a new genre object.
+    */
    public Genre()
    {
    }
 
    @Id
    @GeneratedValue
-   @Column(name="id")
+   @Column(name = "id")
    public long getId()
    {
       return id;
@@ -50,7 +63,7 @@ public class Genre
       this.id = id;
    }
 
-   @Column(name="genre_name")
+   @Column(name = "genre_name")
    public String getGenreName()
    {
       return name;
@@ -62,9 +75,15 @@ public class Genre
    }
 
    @ManyToMany
-   @JoinTable(name="Book_Genre",
-               joinColumns={@JoinColumn(name="genre_id")},
-               inverseJoinColumns={@JoinColumn(name="book_id")})
+   @JoinTable(name = "Book_Genre",
+   joinColumns =
+   {
+      @JoinColumn(name = "genre_id")
+   },
+   inverseJoinColumns =
+   {
+      @JoinColumn(name = "book_id")
+   })
    public List<Book> getBooks()
    {
       return books;
@@ -75,7 +94,12 @@ public class Genre
       this.books = books;
    }
 
+   /**
+    Takes the Genre XML file representation and deserializes the data into Java
+    content trees.
 
+    @param xmlDocument the XML document storing the genre data.
+    */
    public void unMarshall(File xmlDocument)
    {
 
@@ -110,7 +134,7 @@ public class Genre
       }
    }
 
-    /**
+   /**
     Fetch the genre with a matching name.
 
     @param genre the genre to match.
@@ -132,5 +156,4 @@ public class Genre
       session.close();
       return gen;
    }
-
 }

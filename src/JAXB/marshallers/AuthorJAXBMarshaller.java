@@ -7,19 +7,22 @@ import jaxb.generated.author.AuthorRoot;
 import jaxb.generated.author.AuthorType;
 import jaxb.generated.author.ObjectFactory;
 
-// Adapted from Pro XML Development with Java Technology
-// by Ajay Vohra and Deepak Vohra
-// Apress, 2006
+/**
+ @author Team Cosmos: Erni Ali, Phil Vaca, Randy Zaatri
 
+ Solution for CS157B Project #2 AuthorJAXBMarshaller class is responsible for
+ taking the author objects representation and generates an XML document by
+ calling the generateXMLDocument() method with this information.
+ */
 public class AuthorJAXBMarshaller
 {
-	public void generateXMLDocument()
-    {
-		try {
-			JAXBContext jaxbContext =
-                    JAXBContext.newInstance("jaxb.generated.author");
-			Marshaller marshaller = jaxbContext.createMarshaller();
-			ObjectFactory factory = new ObjectFactory();
+   public void generateXMLDocument()
+   {
+      try
+      {
+         JAXBContext jaxbContext = JAXBContext.newInstance("jaxb.generated.author");
+         Marshaller marshaller = jaxbContext.createMarshaller();
+         ObjectFactory factory = new ObjectFactory();
 
          AuthorRoot author = factory.createAuthorRoot();
          List<AuthorType> authorList = author.getAuthorInfo();
@@ -66,19 +69,20 @@ public class AuthorJAXBMarshaller
          authorInfo.setLastName("Hall");
          authorList.add(authorInfo);
 
-			JAXBElement<AuthorRoot> authorElement =
-                    factory.createAuthor(author);
-			marshaller.setProperty("jaxb.formatted.output", Boolean.TRUE);
-			marshaller.marshal(authorElement, System.out);
-		}
-        catch (JAXBException ex) {
-			ex.printStackTrace();
-		}
-	}
+         JAXBElement<AuthorRoot> authorElement =
+                 factory.createAuthor(author);
+         marshaller.setProperty("jaxb.formatted.output", Boolean.TRUE);
+         marshaller.marshal(authorElement, System.out);
+      }
+      catch (JAXBException ex)
+      {
+         ex.printStackTrace();
+      }
+   }
 
-	public static void main(String[] argv)
-    {
-		AuthorJAXBMarshaller jaxbMarshaller = new AuthorJAXBMarshaller();
-		jaxbMarshaller.generateXMLDocument();
-	}
+   public static void main(String[] argv)
+   {
+      AuthorJAXBMarshaller jaxbMarshaller = new AuthorJAXBMarshaller();
+      jaxbMarshaller.generateXMLDocument();
+   }
 }

@@ -24,9 +24,14 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Example;
 
-// Adapted from Pro XML Development with Java Technology
-// by Ajay Vohra and Deepak Vohra
-// Apress, 2006
+/**
+
+ @author Team Cosmo Erni Ali, Randy Zaatri, Philip Vaca
+
+ This class is a representation of a book object. It stores the books
+ identification number, the title of the book, the authors of this book, the
+ genre, ISBN number, publishers and published date.
+ */
 @Entity(name = "book")
 public class Book
 {
@@ -38,10 +43,21 @@ public class Book
    private Publisher publisher;
    private String publishedDate;
 
+   /**
+    Creates a book object with no parameters provided.
+    */
    public Book()
    {
    }
 
+   /**
+    Creates a new Book object setting the title, publishedDate and ISBN number
+    to the objects data fields.
+
+    @param title the title of the book.
+    @param publishedDate the date the book was published.
+    @param isbn the isbn number of the book.
+    */
    public Book(String title, String publishedDate, ISBN isbn)
    {
       this.title = title;
@@ -78,7 +94,7 @@ public class Book
 
    @Id
    @GeneratedValue
-   @Column(name="book_id")
+   @Column(name = "book_id")
    public long getId()
    {
       return id;
@@ -89,57 +105,64 @@ public class Book
       this.id = id;
    }
 
-   @OneToOne(cascade=CascadeType.ALL, fetch= FetchType.LAZY)
-   @JoinColumn(name="isbn_id")
+   @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+   @JoinColumn(name = "isbn_id")
    public ISBN getIsbn()
    {
       return isbn;
    }
+
    public void setIsbn(ISBN isbn)
    {
       this.isbn = isbn;
    }
 
-   @Column(name="pub_date")
+   @Column(name = "pub_date")
    public String getPublishedDate()
    {
       return publishedDate;
    }
+
    public void setPublishedDate(String publishedDate)
    {
       this.publishedDate = publishedDate;
    }
 
-
-
-   @Column(name="title")
+   @Column(name = "title")
    public String getTitle()
    {
       return title;
    }
+
    public void setTitle(String title)
    {
       this.title = title;
    }
 
-
    @ManyToOne
-   @JoinColumn(name="pub_id")
+   @JoinColumn(name = "pub_id")
    public Publisher getPublisher()
    {
       return publisher;
    }
+
    public void setPublisher(Publisher publisher)
    {
       this.publisher = publisher;
    }
 
+   /**
+    Takes the XML document provided deserializing it into newly created Java
+    content trees.
+
+    @param bookXML The XML file representing books.
+    @param isbnXML The XML file storing the ISBN for each book.
+    */
    public void unMarshall(File bookXML, File isbnXML)
    {
       try
       {
-         JAXBContext jaxbContext =
-                 JAXBContext.newInstance("jaxb.generated.book");
+         JAXBContext jaxbContext = JAXBContext.newInstance("jaxb.generated.book");
          Unmarshaller unMarshaller = jaxbContext.createUnmarshaller();
 
          JAXBElement<BookRoot> bookElement =
@@ -161,9 +184,9 @@ public class Book
          {
             for (BookType books : bookList)
             {
-               for(IsbnType isbnNum : isbnList)
+               for (IsbnType isbnNum : isbnList)
                {
-                  if(books.getIsbnId() == isbnNum.getId())
+                  if (books.getIsbnId() == isbnNum.getId())
                   {
                      session.save(new Book(books.getTitle(), books.getPubDate(),
                              new ISBN(isbnNum.getIsbnNumber())));
@@ -290,24 +313,25 @@ public class Book
    }
 
    /**
-     * Fetch the book with a matching title.
-     * @param title the title to match.
-     * @return the book or null.
-     */
-    public static Book find(String title)
-    {
-       // Query by example.
-        Book prototype = new Book();
-        prototype.setTitle(title);
-        Example example = Example.create(prototype);
+    Fetch the book with a matching title.
 
-        Session session = HibernateContext.getSession();
-        Criteria criteria = session.createCriteria(Book.class);
-        criteria.add(example);
+    @param title the title to match.
+    @return the book or null.
+    */
+   public static Book find(String title)
+   {
+      // Query by example.
+      Book prototype = new Book();
+      prototype.setTitle(title);
+      Example example = Example.create(prototype);
 
-        Book book = (Book) criteria.uniqueResult();
+      Session session = HibernateContext.getSession();
+      Criteria criteria = session.createCriteria(Book.class);
+      criteria.add(example);
 
-        session.close();
-        return book;
-    }
+      Book book = (Book) criteria.uniqueResult();
+
+      session.close();
+      return book;
+   }
 }

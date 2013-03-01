@@ -6,10 +6,14 @@ import jaxb.generated.book_author.BookAuthorRoot;
 import jaxb.generated.book_author.BookAuthorType;
 import jaxb.generated.book_author.ObjectFactory;
 
+/**
+ @author Team Cosmos Erni Ali, Randy Zaatri, Philip Vaca
 
-// Adapted from Pro XML Development with Java Technology
-// by Ajay Vohra and Deepak Vohra
-// Apress, 2006
+ Solution for CS157B Project #1 The BookAuthorJAXBMarshaller class is
+ responsible for taking the hibernate generated BookAuthor objects
+ representation and generating an XML document representation by calling the
+ generateXMLDocument() method.
+ */
 public class BookAuthorJAXBMarshaller
 {
    public void generateXMLDocument()
@@ -90,6 +94,13 @@ public class BookAuthorJAXBMarshaller
       }
    }
 
+   /**
+    Main method for the BookAuthorJAXBMarshaller class. Creates a new
+    BookAuthorJAXBMarshaller and then calls the generateXMLDocument method on
+    the newly created BookAuthorJAXBMarshaller.
+
+    @param argv list of string arguments
+    */
    public static void main(String[] argv)
    {
       BookAuthorJAXBMarshaller jaxbMarshaller = new BookAuthorJAXBMarshaller();

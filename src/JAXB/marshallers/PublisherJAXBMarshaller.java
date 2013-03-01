@@ -7,20 +7,22 @@ import jaxb.generated.publisher.ObjectFactory;
 import jaxb.generated.publisher.PublisherRoot;
 import jaxb.generated.publisher.PublisherType;
 
-
-// Adapted from Pro XML Development with Java Technology
-// by Ajay Vohra and Deepak Vohra
-// Apress, 2006
-
+/**
+ * @author Team Cosmos
+ * Erni Ali, Randy Zaatri, Philip Vaca
+ *
+ * This class is responsible for taking the books publisher object representation
+ * and generating an XML document representation of these objects by calling the
+ * generateXMLDocument() method.
+ */
 public class PublisherJAXBMarshaller
 {
 	public void generateXMLDocument()
     {
 		try {
-			JAXBContext jaxbContext =
-                    JAXBContext.newInstance("jaxb.generated.publisher");
-			Marshaller marshaller = jaxbContext.createMarshaller();
-			ObjectFactory factory = new ObjectFactory();
+	JAXBContext jaxbContext = JAXBContext.newInstance("jaxb.generated.publisher");
+	Marshaller marshaller = jaxbContext.createMarshaller();
+	ObjectFactory factory = new ObjectFactory();
 
          PublisherRoot publisher = factory.createPublisherRoot();
          List<PublisherType> publisherList = publisher.getPubInfo();
@@ -55,10 +57,9 @@ public class PublisherJAXBMarshaller
          publisherInfo.setPubName("Random House Digital, Inc");
          publisherList.add(publisherInfo);
 
-			JAXBElement<PublisherRoot> authorElement =
-                    factory.createPublisher(publisher);
-			marshaller.setProperty("jaxb.formatted.output", Boolean.TRUE);
-			marshaller.marshal(authorElement, System.out);
+	JAXBElement<PublisherRoot> authorElement = factory.createPublisher(publisher);
+	marshaller.setProperty("jaxb.formatted.output", Boolean.TRUE);
+	marshaller.marshal(authorElement, System.out);
 		}
         catch (JAXBException ex) {
 			ex.printStackTrace();

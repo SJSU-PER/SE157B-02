@@ -6,10 +6,17 @@ import jaxb.generated.book_genre.BookGenreRoot;
 import jaxb.generated.book_genre.BookGenreType;
 import jaxb.generated.book_genre.ObjectFactory;
 
-
 // Adapted from Pro XML Development with Java Technology
 // by Ajay Vohra and Deepak Vohra
 // Apress, 2006
+/**
+
+ @author Team Cosmo Erni Ali, Randy Zaatri, Philip Vaca
+
+ The Book GenreJAXBMarshaller class is responsible for taking the BookGenre
+ object representation and calling the generateXMLDocument() method to generate
+ an XML representation of these objects.
+ */
 public class BookGenreJAXBMarshaller
 {
    public void generateXMLDocument()
@@ -115,6 +122,13 @@ public class BookGenreJAXBMarshaller
       }
    }
 
+   /**
+    The main method for for BookGenreJAXBMarshaller class. Creates a new
+    BookGenreJAXBMarshaller and calls the generateXMLDocument method on the
+    newly created object.
+
+    @param argv
+    */
    public static void main(String[] argv)
    {
       BookGenreJAXBMarshaller jaxbMarshaller = new BookGenreJAXBMarshaller();

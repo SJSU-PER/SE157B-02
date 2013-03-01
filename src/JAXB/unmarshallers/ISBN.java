@@ -1,40 +1,47 @@
 package JAXB.unmarshallers;
 
-import java.io.File;
-import java.util.List;
-import javax.xml.bind.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import jaxb.generated.isbn.IsbnRoot;
-import jaxb.generated.isbn.IsbnType;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 
-// Adapted from Pro XML Development with Java Technology
-// by Ajay Vohra and Deepak Vohra
-// Apress, 2006
+
+/**
+ @author Team Cosmo Erni Ali, Randy Zaatri, Philip Vaca
+
+ This class is responsible for taking the XML document that represents the books
+ ISBN numbers and deserializing it into Java content trees.
+ */
 @Entity(name = "isbn")
 public class ISBN
 {
    private String ISBNNumber;
    private long id;
 
+   /**
+    Constructor for creating an ISBN object
+    */
    public ISBN()
    {
    }
 
+   /**
+    Creates a new ISBN object setting the ISBNNumber passed as a parameter to
+    this objects ISBNNumber.
+
+    @param ISBNNumber the ISBNNumber of the book.
+    */
    public ISBN(String ISBNNumber)
    {
       this.ISBNNumber = ISBNNumber;
    }
 
-   @Column(name="isbn_number")
+   @Column(name = "isbn_number")
    public String getISBNNumber()
    {
       return ISBNNumber;
    }
+
    public void setISBNNumber(String ISBNNumber)
    {
       this.ISBNNumber = ISBNNumber;
@@ -42,11 +49,12 @@ public class ISBN
 
    @Id
    @GeneratedValue
-   @Column(name="id")
+   @Column(name = "id")
    public long getId()
    {
       return id;
    }
+
    public void setId(long id)
    {
       this.id = id;

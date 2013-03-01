@@ -6,20 +6,23 @@ import jaxb.generated.genre.GenreRoot;
 import jaxb.generated.genre.GenreType;
 import jaxb.generated.genre.ObjectFactory;
 
+/**
 
-// Adapted from Pro XML Development with Java Technology
-// by Ajay Vohra and Deepak Vohra
-// Apress, 2006
+ @author Team Cosmo Erni Ali, Randy Zaatri, Philip Vaca
 
+ This class is responsible for taking the java object representation of a books
+ genre and calling the genreateXMLDocument to create an XML representation of
+ these objects.
+ */
 public class GenreJAXBMarshaller
 {
-	public void generateXMLDocument()
-    {
-		try {
-			JAXBContext jaxbContext =
-                    JAXBContext.newInstance("jaxb.generated.genre");
-			Marshaller marshaller = jaxbContext.createMarshaller();
-			ObjectFactory factory = new ObjectFactory();
+   public void generateXMLDocument()
+   {
+      try
+      {
+         JAXBContext jaxbContext = JAXBContext.newInstance("jaxb.generated.genre");
+         Marshaller marshaller = jaxbContext.createMarshaller();
+         ObjectFactory factory = new ObjectFactory();
 
          GenreRoot genre = factory.createGenreRoot();
          List<GenreType> genreList = genre.getGenreInfo();
@@ -64,19 +67,27 @@ public class GenreJAXBMarshaller
          genreInfo.setGenreName("Adventure");
          genreList.add(genreInfo);
 
-			JAXBElement<GenreRoot> genreElement =
-                    factory.createGenre(genre);
-			marshaller.setProperty("jaxb.formatted.output", Boolean.TRUE);
-			marshaller.marshal(genreElement, System.out);
-		}
-        catch (JAXBException ex) {
-			ex.printStackTrace();
-		}
-	}
+         JAXBElement<GenreRoot> genreElement =
+                 factory.createGenre(genre);
+         marshaller.setProperty("jaxb.formatted.output", Boolean.TRUE);
+         marshaller.marshal(genreElement, System.out);
+      }
+      catch (JAXBException ex)
+      {
+         ex.printStackTrace();
+      }
+   }
 
-	public static void main(String[] argv)
-    {
-		GenreJAXBMarshaller jaxbMarshaller = new GenreJAXBMarshaller();
-		jaxbMarshaller.generateXMLDocument();
-	}
+   /**
+    Main method for the GenreJAXBMarshaller class. Creates a GenreJAXBMarshaller
+    object and calls the generateXMLDocument on this newly created object to
+    create an XML document representation
+
+    @param argv list of string arguments for this method.
+    */
+   public static void main(String[] argv)
+   {
+      GenreJAXBMarshaller jaxbMarshaller = new GenreJAXBMarshaller();
+      jaxbMarshaller.generateXMLDocument();
+   }
 }

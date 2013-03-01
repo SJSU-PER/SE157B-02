@@ -19,9 +19,14 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Example;
 
-// Adapted from Pro XML Development with Java Technology
-// by Ajay Vohra and Deepak Vohra
-// Apress, 2006
+/**
+
+ @author Team Cosmo Erni Ali, Randy Zaatri, Philip Vaca
+
+ This class is responsible for deserializing the XML data representation of the
+ book's author and generating the Java content tree object representation for
+ the authors.
+ */
 @Entity(name = "Author")
 public class Author
 {
@@ -30,10 +35,19 @@ public class Author
    private long id;
    private List<Book> books = new ArrayList<>();
 
+   /**
+    Constructs a new author with null firstname and lastname string parameters.
+    */
    public Author()
    {
    }
 
+   /**
+    Constructor for a new author object.
+
+    @param firstname the first name of the author.
+    @param lastname the last name of the author.
+    */
    public Author(String firstname, String lastname)
    {
       this.firstname = firstname;
@@ -44,11 +58,20 @@ public class Author
    @JoinTable(name="Book_Author",
                joinColumns={@JoinColumn(name="author_id")},
                inverseJoinColumns={@JoinColumn(name="book_id")})
+   /**
+    * Returns the list of books that the author has written.
+    */
    public List<Book> getBooks()
    {
       return books;
    }
 
+   /**
+    Sets the list of books to the provided list of books parameter.
+
+    @param books the list of books provided when the method is called, this list
+    of books will be set to the author objects current list of books.
+    */
    public void setBooks(List<Book> books)
    {
       this.books = books;
@@ -57,11 +80,19 @@ public class Author
    @Id
    @GeneratedValue
    @Column(name = "author_id")
+   /**
+    Returns the ID of the author.
+    */
    public long getId()
    {
       return id;
    }
 
+   /**
+    Sets the ID of the author.
+
+    @param id
+    */
    public void setId(long id)
    {
       this.id = id;
@@ -89,7 +120,12 @@ public class Author
       this.lastname = lastname;
    }
 
+   /**
+    Unmarshalls the XML document file provided in the method call into a java
+    object representation of each author.
 
+    @param xmlDocument the xml document that stores the author data.
+    */
    public void unMarshall(File xmlDocument)
    {
 
